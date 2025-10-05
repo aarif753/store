@@ -19,11 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     downloadBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const fileName = this.getAttribute('data-file');
-            
-            // ✅ Correct path (important: JS is inside /js/, so use ../download/)
-            const filePath = `../download/${fileName}`;
-            
-            // Create a hidden link to trigger real ZIP download
+
+            // ✅ Correct full relative path for your structure
+            const filePath = `download/${fileName}`;
             const tempLink = document.createElement('a');
             tempLink.href = filePath;
             tempLink.download = fileName;
@@ -31,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tempLink.click();
             document.body.removeChild(tempLink);
                                 
-            // ✅ Button animation
+            // ✅ Animation for button
             const originalHTML = this.innerHTML;
             this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
             this.style.background = 'var(--success)';
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ✨ Hover animation for product cards
+    // ✨ Hover animation for cards
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
