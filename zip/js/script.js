@@ -19,16 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
     downloadBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const fileName = this.getAttribute('data-file');
-            
-            // ✅ Correct folder path (your folder = "download")
+
+            // ✅ Correct full relative path for your structure
+            const filePath = `download/${fileName}`;
             const tempLink = document.createElement('a');
-            tempLink.href = `download/${fileName}`;
+            tempLink.href = filePath;
             tempLink.download = fileName;
             document.body.appendChild(tempLink);
             tempLink.click();
             document.body.removeChild(tempLink);
                                 
-            // Animation effect for button
+            // ✅ Animation for button
             const originalHTML = this.innerHTML;
             this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
             this.style.background = 'var(--success)';
