@@ -574,7 +574,7 @@
 </footer>
     </div>
 
-    <script>
+   <script>
         // Create floating elements
         const floatingContainer = document.querySelector('.floating-elements');
         for (let i = 0; i < 15; i++) {
@@ -598,7 +598,8 @@
         // Add click effect to download button
         const downloadBtn = document.querySelector('.download-btn');
         downloadBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+            // Remove preventDefault() to allow actual download
+            // e.preventDefault();
             
             // Create ripple effect
             const ripple = document.createElement('span');
@@ -618,10 +619,6 @@
             setTimeout(() => {
                 ripple.remove();
             }, 600);
-            
-            // Show download confirmation
-            alert('Thank you for downloading Creative Studio Pro! Your download will begin shortly.');
-        });
 
         // Add CSS for ripple effect
         const style = document.createElement('style');
@@ -646,4 +643,5 @@
     <script src="https://aarifalam.life/main/js/main-header.js"></script>
 
 </body>
+
 </html>
