@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.parentElement.classList.remove('image-loading');
         });
         
-        // Add loading class if image hasn't loaded yet
         if (!img.complete) {
             img.parentElement.classList.add('image-loading');
             img.style.opacity = '0';
@@ -21,20 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const fileName = this.getAttribute('data-file');
             
-            // Create a temporary element to trigger download
+            // ✅ Correct folder path (your folder = "download")
             const tempLink = document.createElement('a');
-            tempLink.href = `download/${fileName}`; // ✅ fixed path (folder = "download")
+            tempLink.href = `download/${fileName}`;
             tempLink.download = fileName;
             document.body.appendChild(tempLink);
             tempLink.click();
             document.body.removeChild(tempLink);
                                 
-            // Add animation effect to button
+            // Animation effect for button
             const originalHTML = this.innerHTML;
             this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
             this.style.background = 'var(--success)';
             
-            // Reset button after 2 seconds
             setTimeout(() => {
                 this.innerHTML = originalHTML;
                 this.style.background = '';
@@ -42,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ✨ Add hover effect for cards
+    // ✨ Hover animation for cards
     const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
